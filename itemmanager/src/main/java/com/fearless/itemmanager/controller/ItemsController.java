@@ -17,32 +17,32 @@ public class ItemsController {
     ItemsService itemsService;
 
     @PostMapping("/items")
-    public Item createItem(@RequestBody ItemRequest itemRequest){
+    public Item createItem(@RequestBody ItemRequest itemRequest) {
         return itemsService.createItem(itemRequest);
     }
 
     @GetMapping("/items")
-    public List<Item> getAllItems(){
+    public List<Item> getAllItems() {
         return itemsService.getAllItems();
     }
 
     @GetMapping("/items/{id}")
-    public Item getItemById(@PathVariable(value = "id") Long id){
+    public Item getItemById(@PathVariable(value = "id") Long id) {
         return itemsService.getItemById(id);
     }
 
     @PutMapping("/items/{id}")
-    public Item updateItemById(@PathVariable(value = "id") Long id, @RequestBody ItemRequest itemRequest){
+    public Item updateItemById(@PathVariable(value = "id") Long id, @RequestBody ItemRequest itemRequest) {
         return itemsService.updateItemById(id, itemRequest);
     }
 
     @DeleteMapping("/items")
-    public void deleteAllItems(){
+    public void deleteAllItems() {
         itemsService.deleteAllItems();
     }
 
     @DeleteMapping("/items/{id}")
-    public void deleteById(@PathVariable(value = "id") Long id){
+    public void deleteById(@PathVariable(value = "id") Long id) {
         itemsService.deleteById(id);
     }
 

@@ -2,9 +2,7 @@ package com.fearless.itemmanager.service;
 
 import com.fearless.itemmanager.model.Item;
 import com.fearless.itemmanager.model.ItemRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.*;
 
@@ -26,7 +24,7 @@ public class ItemsService {
     public List<Item> getAllItems() {
 
         List<Item> response = new ArrayList<>();
-        for(Map.Entry<Long, String> entry: itemsMap.entrySet()){
+        for (Map.Entry<Long, String> entry : itemsMap.entrySet()) {
             response.add(new Item(entry.getKey(), entry.getValue()));
         }
 
@@ -40,7 +38,7 @@ public class ItemsService {
         Random r = new Random();
         Long id = (long) (r.nextDouble() * range);
 
-        if (itemsMap.containsKey(id)){
+        if (itemsMap.containsKey(id)) {
             return generateIdForItem();
         } else {
             return id;
@@ -53,7 +51,7 @@ public class ItemsService {
 
     public Item updateItemById(Long id, ItemRequest itemRequest) {
 
-        if(itemsMap.containsKey(id)){
+        if (itemsMap.containsKey(id)) {
             itemsMap.put(id, itemRequest.getName());
             return new Item(id, itemsMap.get(id));
         }
@@ -65,7 +63,7 @@ public class ItemsService {
     }
 
     public void deleteById(Long id) {
-        if(itemsMap.containsKey(id)){
+        if (itemsMap.containsKey(id)) {
             itemsMap.remove(id);
         }
     }
